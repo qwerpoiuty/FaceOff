@@ -1,0 +1,16 @@
+{
+  "name": "faceoff",
+  "version": "1.0.0",
+  "description": "FaceOff Game",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.12.4",
+    "socket.io": "^1.3.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "Stan Le",
+  "license": "MIT"
+}
