@@ -3,16 +3,19 @@ var socket = io(window.location.origin);
 socket.on('connect',function(){
 	console.log('connected...')
 })
-faceoff.on('answer', function(id){
-    socket.emit("answer",id)
-	console.log('emitting',id)
+faceoff.on('answer', function(xlocation){
+    socket.emit("answer",xlocation)
 })
-socket.on('answer',function(id){
-   faceoff.emit
+
+faceoff.on('location',function(xlocation){
+	socket.emit("location",xlocation)
 })
-socket.on('attack',function(){
-	console.log('attacking')
-	faceoff.attack()
+socket.on('enemylocated',function(xlocation){
+	faceoff.enemy(xlocation)
+})
+
+socket.on('getAttack',function(xlocation){
+	faceoff.getAttacked(xlocation)
 })
 socket.on("disconnect", function(){
     console.log(':(')

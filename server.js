@@ -14,10 +14,14 @@ var board = []
 io.on('connection', function (socket) {
     // This function receives the newly connected socket.
     // This function will be called for EACH browser that connects to our server.
-    socket.on('answer',function(id){
-    	console.log('attack!')
-    	socket.broadcast.emit('attack',id)
+    socket.on('answer',function(xlocation){
+    	socket.broadcast.emit('getAttack',xlocation)
     })
+
+    socket.on('location',function(xlocation){
+    	socket.broadcast.emit('enemylocated',xlocation)
+    })
+
 
 });
 

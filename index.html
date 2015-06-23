@@ -3,47 +3,39 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Faceoff</title>
+	<link href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/css/bootstrap.css" rel="stylesheet">
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <link href="main.css" rel="stylesheet">
+	<style>
+		video, canvas {
+		margin-left: 230px;
+		margin-top: 120px;
+		position: absolute;
+		}
+    </style>
 </head>
 <body>
+	<div class="demo-frame">
+		<div class="demo-container">
+			<video id="video" width="320" height="240" preload autoplay loop muted></video>
+		</div>
+			<canvas id="canvas" width="1000" height="1000"></canvas>
+	</div>
 
 	<h3 id = "question">2+2</h3>
 	<input id = 'answer' type="text">
-	<video autoplay></video>
-
+	<h3 id = "score">score</h3>
 	<script>
-	function hasGetUserMedia() {
-	  return !!(navigator.getUserMedia || navigator.webkitGetUserMedia ||
-	            navigator.mozGetUserMedia || navigator.msGetUserMedia);
-	}
-
-	if (hasGetUserMedia()) {
-	  // Good to go!
-	} else {
-	  alert('getUserMedia() is not supported in your browser');
-	}
-	  var errorCallback = function(e) {
-	    console.log('Reeeejected!', e);
-	  };
-
-	  // Not showing vendor prefixes.
-	  navigator.webkitGetUserMedia({video: true, audio: true}, function(localMediaStream) {
-	    var video = document.querySelector('video');
-	    video.src = window.URL.createObjectURL(localMediaStream);
-
-	    // Note: onloadedmetadata doesn't fire in Chrome when using it with getUserMedia.
-	    // See crbug.com/110938.
-	    video.onloadedmetadata = function(e) {
-	      // Ready to go. Do some stuff.
-	      console.log('success')
-	    };
-	  }, errorCallback);
+		
 	</script>
+	<script src="tracking-min.js"></script>
+	<script src="face-min.js"></script>
 
-	<!-- <script src = "framehandler.js"></script> -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 	<script src = "event-emitter.js"></script>
-	<script src = "faceoff.js"></script>
 	<script src="socket.io/socket.io.js"></script>
+	<script src = "faceoff.js"></script>
+	<script src = "framehandler.js"></script>
     <script src="app.js"></script>
 
 </body>
