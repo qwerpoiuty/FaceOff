@@ -9,8 +9,7 @@
     },
     "devDependencies": {},
     "scripts": {
-        "start": "node server.js",
-        "postinstall": "node server.js"
+        "start": "node server.js"
     },
     "author": "Stan Le",
     "license": "MIT"
