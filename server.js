@@ -24,6 +24,7 @@ io.on('connection', function(socket) {
 
 
 });
+var isProduction = process.env.NODE_ENV === 'production';
 var port = isProduction ? process.env.PORT : 1337;
 
 server.listen(port, function() {
