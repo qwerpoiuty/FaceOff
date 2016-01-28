@@ -11,28 +11,28 @@ var app = express();
 server.on('request', app);
 var io = socketio(server);
 var board = []
-io.on('connection', function (socket) {
+io.on('connection', function(socket) {
     // This function receives the newly connected socket.
     // This function will be called for EACH browser that connects to our server.
-    socket.on('answer',function(xlocation){
-    	socket.broadcast.emit('getAttack',xlocation)
+    socket.on('answer', function(xlocation) {
+        socket.broadcast.emit('getAttack', xlocation)
     })
 
-    socket.on('location',function(xlocation){
-    	socket.broadcast.emit('enemylocated',xlocation)
+    socket.on('location', function(xlocation) {
+        socket.broadcast.emit('enemylocated', xlocation)
     })
 
 
 });
+var port = isProduction ? process.env.PORT : 1337;
 
-
-server.listen(1337, function () {
+server.listen(port, function() {
     console.log('The server is listening on port 1337!');
 });
 
 app.use(express.static(path.join(__dirname, 'browser')));
 
-app.get('/', function (req, res) {
+app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname, 'index.html'));
 });
 
